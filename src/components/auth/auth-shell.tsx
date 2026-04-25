@@ -27,7 +27,7 @@ export const AuthShell = ({
       <div className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-orange-300/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-8 px-6 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
-        <div className="hidden rounded-[36px] border border-white/10 bg-white/6 p-8 shadow-[0_30px_120px_rgba(8,15,29,0.55)] backdrop-blur-xl lg:flex lg:flex-col lg:justify-between">
+        <div className="hidden rounded-[36px] border border-white/10 bg-white/6 p-8 shadow-[0_30px_120px_rgba(8,15,29,0.55)] backdrop-blur-xl lg:flex lg:flex-col lg:gap-10">
           <div className="space-y-6">
             <div className="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-cyan-200">
               {eyebrow}
@@ -36,18 +36,18 @@ export const AuthShell = ({
               <h1 className="text-5xl font-semibold tracking-tight text-white">
                 Practice with structure, not scattered bookmarks.
               </h1>
-              <p className="text-lg leading-8 text-slate-300">
+              <p className="text-lg leading-8 text-slate-400">
                 A polished DSA workspace for topics, curated problem links, and
                 progress tracking that stays fast as your sheet grows.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-2 md:grid-cols-2">
             {[
               ["Topics", "Organize the full sheet into focused learning tracks."],
               ["Progress", "Track completion cleanly with optimistic updates."],
-              ["Admin", "Create new topics and problems without leaving the flow."],
+              // ["Admin", "Create new topics and problems without leaving the flow."],
             ].map(([heading, body]) => (
               <div
                 key={heading}
