@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { toast } from "sonner";
 
 import { DifficultyBadge } from "@/components/ui/badge";
@@ -20,11 +19,11 @@ export const ProblemItem = ({
   onToggle,
   problem,
 }: ProblemItemProps) => {
-  const links = [
-    { label: "LeetCode", href: problem.leetcodeUrl },
-    { label: "Article", href: problem.articleUrl },
-    { label: "YouTube", href: problem.youtubeUrl },
-  ].filter((link) => Boolean(link.href));
+  const resources = [
+    { label: "LeetCode", href: problem.leetcodeUrl?.trim() || null },
+    { label: "Article", href: problem.articleUrl?.trim() || null },
+    { label: "YouTube", href: problem.youtubeUrl?.trim() || null },
+  ];
 
   return (
     <Card className="hover:border-cyan-300/20">
@@ -35,22 +34,25 @@ export const ProblemItem = ({
             <DifficultyBadge difficulty={problem.difficulty} />
           </div>
           <div className="flex flex-wrap gap-2">
-            {links.length ? (
-              links.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href!}
+            {resources.map((resource) =>
+              resource.href ? (
+                <a
+                  key={resource.label}
+                  href={resource.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/30 hover:text-cyan-200"
                 >
-                  {link.label}
-                </Link>
-              ))
-            ) : (
-              <span className="text-sm text-slate-500">
-                Links were not provided for this problem yet.
-              </span>
+                  {resource.label}
+                </a>
+              ) : (
+                <span
+                  key={resource.label}
+                  className="rounded-full border border-dashed border-white/10 bg-slate-900/50 px-3 py-1.5 text-sm text-slate-400"
+                >
+                  {resource.label}: Coming in few weeks
+                </span>
+              ),
             )}
           </div>
         </div>
